@@ -181,4 +181,4 @@ function copyDir (source, dest, options, callback) {
   }
 }
 
-module.exports = copyDir
+exports.copyDir = copyDir

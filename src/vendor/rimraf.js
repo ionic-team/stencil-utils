@@ -292,5 +292,5 @@ function rmkidsSync (p, options) {
   options.rmdirSync(p, options)
 }
 
-module.exports = rimraf
+exports.rimraf = rimraf
 rimraf.sync = rimrafSync
