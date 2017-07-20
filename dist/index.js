@@ -14,24 +14,23 @@ const copyDir_1 = require("./vendor/copyDir");
 const concurrent_1 = require("./concurrent");
 exports.concurrent = concurrent_1.concurrent;
 const promisify_1 = require("./utils/promisify");
-const rimraf = promisify_1.promisifyNr(rimraf_1.rimraf);
-exports.rimraf = rimraf;
-const mkdirp = promisify_1.promisify(mkdirp_1.mkdirp);
-exports.mkdirp = mkdirp;
-const copyDir = promisify_1.promisifyNr(copyDir_1.copyDir);
-exports.copyDir = copyDir;
+const rimrafPromised = promisify_1.promisifyNr(rimraf_1.rimraf);
+exports.rimraf = rimrafPromised;
+const mkdirpPromised = promisify_1.promisify(mkdirp_1.mkdirP);
+exports.mkdirp = mkdirpPromised;
+const copyDirPromised = promisify_1.promisifyNr(copyDir_1.copyDir);
+exports.copyDir = copyDirPromised;
 function run(argv) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log(argv);
         switch (argv[0]) {
             case 'rimraf':
-                yield rimraf(argv[1]);
+                yield rimrafPromised(argv[1]);
                 break;
             case 'mkdirp':
-                yield mkdirp(argv[1]);
+                yield mkdirpPromised(argv[1]);
                 break;
             case 'copyDir':
-                yield copyDir(argv[1], argv[2]);
+                yield copyDirPromised(argv[1], argv[2]);
                 break;
             case 'concurrent':
                 concurrent_1.concurrent(argv.slice(1));

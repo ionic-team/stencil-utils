@@ -10,8 +10,10 @@ export interface Promisify {
  * @example: const rReadFile = promisify<Buffer, string>(fs.readFile);
  *
  */
-export const promisify: Promisify = function(func: any) {
+export const promisify: Promisify = function(func: Function) {
+  console.log(func);
   return (...args: any[]) => {
+    console.log(func);
     return new Promise((resolve, reject) => {
       func(...args, (err: any, response: any) => {
         if (err) {
@@ -31,7 +33,7 @@ export interface PromisifyNoResult {
   <A1, A2>(func: (arg1: A1, arg2: A2, callback: (err: any) => void) => void): (arg1: A1, arg2: A2) => Promise<undefined>;
 }
 
-export const promisifyNr: PromisifyNoResult = function(func: any) {
+export const promisifyNr: PromisifyNoResult = function(func: Function) {
   return (...args: any[]): Promise<undefined> => {
     return new Promise((resolve, reject) => {
       func(...args, (err: any) => {

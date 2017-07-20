@@ -267,32 +267,4 @@ function rimrafSync (p, options) {
   }
 }
 
-function rmdirSync (p, options, originalEr) {
-  assert(p)
-  assert(options)
-  if (originalEr) {
-    assert(originalEr instanceof Error)
-  }
-
-  try {
-    options.rmdirSync(p)
-  } catch (er) {
-    if (er.code === 'ENOTDIR') {
-      throw originalEr
-    } else if (er.code === 'ENOTEMPTY' || er.code === 'EEXIST' || er.code === 'EPERM') {
-      rmkidsSync(p, options)
-    } else if (er.code !== 'ENOENT') {
-      throw er
-    }
-  }
-}
-
-function rmkidsSync (p, options) {
-  assert(p)
-  assert(options)
-  options.readdirSync(p).forEach(f => rimrafSync(path.join(p, f), options))
-  options.rmdirSync(p, options)
-}
-
 exports.rimraf = rimraf
-rimraf.sync = rimrafSync

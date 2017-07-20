@@ -2,7 +2,7 @@
 /* Adapted from https://github.com/kimmobrunfeldt/concurrently */
 Object.defineProperty(exports, "__esModule", { value: true });
 const childProcess = require("child_process");
-const treeKill = require("./vendor/tree-kill");
+const tree_kill_1 = require("./vendor/tree-kill");
 const IS_WINDOWS = /^win/.test(process.platform);
 function concurrent(commands) {
     var childrenInfo = {};
@@ -24,7 +24,7 @@ function concurrent(commands) {
     ['SIGINT', 'SIGTERM'].forEach(function (signal) {
         process.on(signal, function () {
             children.forEach(function (child) {
-                treeKill(child.pid, signal);
+                tree_kill_1.treeKill(child.pid, signal);
             });
         });
     });

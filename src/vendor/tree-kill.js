@@ -4,7 +4,7 @@ var childProcess = require('child_process');
 var spawn = childProcess.spawn;
 var exec = childProcess.exec;
 
-module.exports = function (pid, signal, callback) {
+exports.killTree = function (pid, signal, callback) {
     var tree = {};
     var pidsToProcess = {};
     tree[pid] = [];

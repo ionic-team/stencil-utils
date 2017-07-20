@@ -1,25 +1,24 @@
-import { rimraf as rimrafAsync } from './vendor/rimraf';
-import { mkdirp as mkdirpAsync } from './vendor/mkdirp';
-import { copyDir as copyDirAsync } from './vendor/copyDir';
+import { rimraf } from './vendor/rimraf';
+import { mkdirP } from './vendor/mkdirp';
+import { copyDir } from './vendor/copyDir';
 import { concurrent } from './concurrent';
 import { promisify, promisifyNr } from './utils/promisify';
 
-const rimraf = promisifyNr(rimrafAsync);
-const mkdirp = promisify(mkdirpAsync);
-const copyDir = promisifyNr<string, string>(copyDirAsync);
+const rimrafPromised = promisifyNr(rimraf);
+const mkdirpPromised = promisify(mkdirP);
+const copyDirPromised = promisifyNr<string, string>(copyDir);
 
 async function run(argv: string[]) {
-  console.log(argv);
 
   switch(argv[0]) {
   case 'rimraf':
-    await rimraf(argv[1]);
+    await rimrafPromised(argv[1]);
     break;
   case 'mkdirp':
-    await mkdirp(argv[1]);
+    await mkdirpPromised(argv[1]);
     break;
   case 'copyDir':
-    await copyDir(argv[1], argv[2]);
+    await copyDirPromised(argv[1], argv[2]);
     break;
   case 'concurrent':
     concurrent(argv.slice(1));
@@ -34,9 +33,9 @@ async function run(argv: string[]) {
 }
 
 export {
-  rimraf,
-  mkdirp,
-  copyDir,
+  rimrafPromised as rimraf,
+  mkdirpPromised as mkdirp,
+  copyDirPromised as copyDir,
   run,
   concurrent
 }

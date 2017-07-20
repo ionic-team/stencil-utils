@@ -4,8 +4,6 @@ var path = require('path');
 var fs = require('fs');
 var _0777 = parseInt('0777', 8);
 
-exports.mkdirP = mkdirP;
-
 function mkdirP (p, opts, f, made) {
     if (typeof opts === 'function') {
         f = opts;
@@ -98,3 +96,5 @@ mkdirP.sync = function sync (p, opts, made) {
 
     return made;
 };
+
+exports.mkdirP = mkdirP;
