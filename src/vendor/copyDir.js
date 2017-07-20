@@ -1,4 +1,4 @@
-// imported from ncp (this is temporary, will rewrite)
+/* Adapted from https://github.com/AvianFlu/ncp */
 
 var path = require('path')
 var fs = require('fs');

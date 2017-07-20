@@ -1,3 +1,5 @@
+/* This is an adaption of https://github.com/substack/node-mkdirp */
+
 var path = require('path');
 var fs = require('fs');
 var _0777 = parseInt('0777', 8);

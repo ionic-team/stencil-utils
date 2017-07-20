@@ -12,24 +12,30 @@ const rimraf_1 = require("./vendor/rimraf");
 const mkdirp_1 = require("./vendor/mkdirp");
 const copyDir_1 = require("./vendor/copyDir");
 const concurrent_1 = require("./concurrent");
+exports.concurrent = concurrent_1.concurrent;
 const promisify_1 = require("./utils/promisify");
-const rimrafPr = promisify_1.promisifyNr(rimraf_1.rimraf);
-const mkdirpPr = promisify_1.promisify(mkdirp_1.mkdirp);
-const copyDirPr = promisify_1.promisifyNr(copyDir_1.copyDir);
+const rimraf = promisify_1.promisifyNr(rimraf_1.rimraf);
+exports.rimraf = rimraf;
+const mkdirp = promisify_1.promisify(mkdirp_1.mkdirp);
+exports.mkdirp = mkdirp;
+const copyDir = promisify_1.promisifyNr(copyDir_1.copyDir);
+exports.copyDir = copyDir;
 function run(argv) {
     return __awaiter(this, void 0, void 0, function* () {
+        console.log(argv);
         switch (argv[0]) {
             case 'rimraf':
-                yield rimrafPr(argv[1]);
+                yield rimraf(argv[1]);
                 break;
             case 'mkdirp':
-                yield mkdirpPr(argv[1]);
+                yield mkdirp(argv[1]);
                 break;
             case 'copyDir':
-                yield copyDirPr(argv[1], argv[2]);
+                yield copyDir(argv[1], argv[2]);
                 break;
             case 'concurrent':
                 concurrent_1.concurrent(argv.slice(1));
+                break;
             default:
                 console.log(`
   The following is an invalid command: ${argv[0]}

@@ -1,4 +1,5 @@
 "use strict";
+/* Adapted from https://github.com/kimmobrunfeldt/concurrently */
 Object.defineProperty(exports, "__esModule", { value: true });
 const childProcess = require("child_process");
 const treeKill = require("./vendor/tree-kill");

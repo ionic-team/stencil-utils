@@ -1,3 +1,5 @@
+/* Adapted from https://github.com/kimmobrunfeldt/concurrently */
+
 import * as childProcess from 'child_process';
 import * as treeKill from './vendor/tree-kill';
 

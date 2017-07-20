@@ -1,28 +1,29 @@
-import { rimraf } from './vendor/rimraf';
-import { mkdirp } from './vendor/mkdirp';
-import { copyDir } from './vendor/copyDir';
+import { rimraf as rimrafAsync } from './vendor/rimraf';
+import { mkdirp as mkdirpAsync } from './vendor/mkdirp';
+import { copyDir as copyDirAsync } from './vendor/copyDir';
 import { concurrent } from './concurrent';
 import { promisify, promisifyNr } from './utils/promisify';
 
+const rimraf = promisifyNr(rimrafAsync);
+const mkdirp = promisify(mkdirpAsync);
+const copyDir = promisifyNr<string, string>(copyDirAsync);
 
-const rimrafPr = promisifyNr(rimraf);
-const mkdirpPr = promisify(mkdirp);
-const copyDirPr = promisifyNr<string, string>(copyDir);
-
-export async function run(argv: string[]) {
+async function run(argv: string[]) {
+  console.log(argv);
 
   switch(argv[0]) {
   case 'rimraf':
-    await rimrafPr(argv[1]);
+    await rimraf(argv[1]);
     break;
   case 'mkdirp':
-    await mkdirpPr(argv[1]);
+    await mkdirp(argv[1]);
     break;
   case 'copyDir':
-    await copyDirPr(argv[1], argv[2]);
+    await copyDir(argv[1], argv[2]);
     break;
   case 'concurrent':
     concurrent(argv.slice(1));
+    break;
   default:
     console.log(`
   The following is an invalid command: ${argv[0]}
@@ -30,4 +31,12 @@ export async function run(argv: string[]) {
     `);
     process.exit(1);
   }
+}
+
+export {
+  rimraf,
+  mkdirp,
+  copyDir,
+  run,
+  concurrent
 }

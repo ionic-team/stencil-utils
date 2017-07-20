@@ -1,5 +1,5 @@
 {
-  "name": "stencil-dev",
+  "name": "@stencil/utils",
   "version": "0.0.1",
   "description": "Dev tools to improve cross platform experiences.",
   "main": "index.js",

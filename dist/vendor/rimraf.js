@@ -1,3 +1,5 @@
+/* This is an adaption of https://github.com/isaacs/rimraf */
+
 'use strict'
 
 const path = require('path')
