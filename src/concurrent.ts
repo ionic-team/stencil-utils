@@ -1,5 +1,5 @@
 import * as childProcess from 'child_process';
-import * as treeKill from './utils/tree-kill';
+import * as treeKill from './vendor/tree-kill';
 
 interface SpawnOptions {
   cwd?: string;

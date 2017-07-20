@@ -1,10 +1,14 @@
 {
   "name": "stencil-dev",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Dev tools to improve cross platform experiences.",
   "main": "index.js",
+  "bin": {
+    "sd": "./bin/sd"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cp -Rf src/vendor dist && tsc -p .",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -19,9 +23,5 @@
   "devDependencies": {
     "@types/node": "^8.0.14",
     "typescript": "^2.4.1"
-  },
-  "dependencies": {
-    "@types/mkdirp": "^0.5.0",
-    "@types/rimraf": "0.0.28"
   }
 }
