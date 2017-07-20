@@ -1,0 +1,27 @@
+{
+  "name": "stencil-dev",
+  "version": "1.0.0",
+  "description": "Dev tools to improve cross platform experiences.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/stencil-dev.git"
+  },
+  "author": "ionic team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ionic-team/stencil-dev/issues"
+  },
+  "homepage": "https://github.com/ionic-team/stencil-dev#readme",
+  "devDependencies": {
+    "@types/node": "^8.0.14",
+    "typescript": "^2.4.1"
+  },
+  "dependencies": {
+    "@types/mkdirp": "^0.5.0",
+    "@types/rimraf": "0.0.28"
+  }
+}
