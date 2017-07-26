@@ -1,1 +1,1 @@
-export declare function treeKill(pid: number, signal: NodeJS.Signals, callback?: (error: Error) => void): void;
+export declare function killTree(pid: number, signal: NodeJS.Signals, callback?: (error: Error) => void): void;

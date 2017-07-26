@@ -1,7 +1,7 @@
 /* Adapted from https://github.com/kimmobrunfeldt/concurrently */
 
 import * as childProcess from 'child_process';
-import { treeKill } from './vendor/tree-kill';
+import { killTree } from './vendor/tree-kill';
 
 interface SpawnOptions {
   cwd?: string;
@@ -50,7 +50,7 @@ export function concurrent(commands: string[]) {
   ['SIGINT', 'SIGTERM'].forEach(function(signal: NodeJS.Signals) {
     process.on(signal, function() {
       children.forEach(function(child) {
-        treeKill(child.pid, signal);
+        killTree(child.pid, signal);
       });
     });
   });

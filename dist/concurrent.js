@@ -24,7 +24,7 @@ function concurrent(commands) {
     ['SIGINT', 'SIGTERM'].forEach(function (signal) {
         process.on(signal, function () {
             children.forEach(function (child) {
-                tree_kill_1.treeKill(child.pid, signal);
+                tree_kill_1.killTree(child.pid, signal);
             });
         });
     });
