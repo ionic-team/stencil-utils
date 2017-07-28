@@ -11,9 +11,7 @@ export interface Promisify {
  *
  */
 export const promisify: Promisify = function(func: Function) {
-  console.log(func);
   return (...args: any[]) => {
-    console.log(func);
     return new Promise((resolve, reject) => {
       func(...args, (err: any, response: any) => {
         if (err) {

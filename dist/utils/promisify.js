@@ -5,9 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *
  */
 exports.promisify = function (func) {
-    console.log(func);
     return (...args) => {
-        console.log(func);
         return new Promise((resolve, reject) => {
             func(...args, (err, response) => {
                 if (err) {
