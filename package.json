@@ -2,7 +2,7 @@
   "name": "@stencil/utils",
   "version": "0.0.4",
   "description": "Dev tools to improve cross platform experiences.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "bin": {
     "sd": "./bin/sd"
   },
