@@ -12,6 +12,7 @@
       "es2016"
     ],
     "outDir": "dist",
+    "declaration": true,
     "sourceMap": false
   },
   "include": [

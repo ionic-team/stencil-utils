@@ -2,12 +2,14 @@
   "name": "@stencil/utils",
   "version": "0.0.4",
   "description": "Dev tools to improve cross platform experiences.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "sd": "./bin/sd"
   },
   "scripts": {
     "build": "rm -Rf dist && tsc -p . && cp -Rf src/vendor dist ",
+    "deploy": "npm run build && np",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
@@ -22,6 +24,7 @@
   "homepage": "https://github.com/ionic-team/stencil-dev#readme",
   "devDependencies": {
     "@types/node": "^8.0.14",
+    "np": "^3.0.4",
     "typescript": "^2.4.1"
   }
 }
